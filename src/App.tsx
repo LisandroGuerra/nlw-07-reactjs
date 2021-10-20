@@ -1,9 +1,12 @@
+import styles from './App.module.scss'
+import { LoginBox } from './components/LoginBox'
+import { MessageList } from './components/MessageList'
 
 export function App() {
   return (
-    <main className="contentWrapper">
-      <h1>Next Level Week 7</h1>
-    </main>
-    
+    <main className={styles.contentWrapper}>
+      <MessageList/>
+      <LoginBox/>
+    </main>    
   )
 }
