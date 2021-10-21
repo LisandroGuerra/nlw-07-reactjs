@@ -46,6 +46,8 @@ export function AuthProvider(props: AuthProvider) {
 
         localStorage.setItem('@nlw_heat:token', token)
 
+        api.defaults.headers.common.authorization = `Bearer ${token}`
+
         setUser(user)
     }
 
