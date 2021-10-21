@@ -10,7 +10,8 @@ type User ={
 
 type AuthContextData = {
     user: User | null,
-    signInUrl: string
+    signInUrl: string,
+    signOut: () => void
 }
 
 type AuthResponse = {
@@ -48,6 +49,11 @@ export function AuthProvider(props: AuthProvider) {
         setUser(user)
     }
 
+    function signOut() {
+        setUser(null)
+        localStorage.removeItem('@nlw_heat:token')
+    }
+
     useEffect(() => {
         const token = localStorage.getItem('@nlw_heat:token')
 
@@ -71,7 +77,7 @@ export function AuthProvider(props: AuthProvider) {
     }, [])
 
     return (
-        <AuthContext.Provider value={{signInUrl, user}}>
+        <AuthContext.Provider value={{signInUrl, user, signOut}}>
             {props.children}
         </AuthContext.Provider>
     )
